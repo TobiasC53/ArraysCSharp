@@ -6,7 +6,12 @@ namespace ArraysCSharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string Sehrgut, Gut, Befriedigend, Ausreichend, Mangelhaft, Ungenügend;
+
+
+
+
+
         }
     }
 }
