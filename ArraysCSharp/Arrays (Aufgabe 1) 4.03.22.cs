@@ -17,41 +17,53 @@ namespace ArraysCSharp
             string[] namen = new string[AnzahlSchüler];
 
             int[] noten = new int[AnzahlSchüler];
-            int anzahl = 1;
 
             for (int AnzahlS = 0; AnzahlS < AnzahlSchüler; AnzahlS++)
             {
 
-
-                Console.WriteLine("Schüler Name {0}", anzahl);
-                anzahl++;
-                name = Console.ReadLine();
-
-                namen[AnzahlS] = name;
-
-                Console.WriteLine("{0}'s Note:", name);
-                Note = Convert.ToInt32(Console.ReadLine());
-                Console.Clear();
-
-                if (Note >= 0||Note <= 6)
+                bool flag = false;
+                do
                 {
-                    Notenschnitt = Notenschnitt + Note;
+                    Console.WriteLine("Schüler Name {0}", AnzahlS + 1);
+                    name = Console.ReadLine();
 
-                    for (int Ausgabe = 0; Ausgabe < AnzahlSchüler; Ausgabe++)
-                    {
-                        Console.WriteLine(namen[Ausgabe] + "\tNote:" + noten[Ausgabe]);
+                    namen[AnzahlS] = name;
 
-                    }
-
-                    Console.WriteLine("Der Notendurchschnitt beträgt:{0:F2}", Notenschnitt / AnzahlSchüler);
-                }
-                if (Note <=-1||Note >= 7)
-                {
+                    Console.WriteLine("{0}'s Note:", name);
+                    Note = Convert.ToInt32(Console.ReadLine());
                     Console.Clear();
-                    Console.WriteLine("Die Note {0} existiert nicht bitte versuche es noch einmal", Note);
-                    AnzahlSchüler = 0;
-                }
+
+                    if (Note > 0 && Note <= 6)
+                    {
+                        noten[AnzahlS] = Note;
+                        Notenschnitt = Notenschnitt + Note;
+                        flag = true;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Die Note {0} existiert nicht bitte versuche es noch einmal", Note);
+                        AnzahlSchüler = 0;
+                        flag = false;
+                    }
+                } while (flag==false);
+
+
             }
+
+
+
+            for (int Ausgabe = 0; Ausgabe < AnzahlSchüler; Ausgabe++)
+            {
+                Console.WriteLine(namen[Ausgabe] + "|" + "\tNote:" + "|" + noten[Ausgabe]);
+
+            }
+            Console.WriteLine("Der Notendurchschnitt beträgt:{0:F2}", Notenschnitt / AnzahlSchüler);
+
+
+
+
+
 
         }
     }
